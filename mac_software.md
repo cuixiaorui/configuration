@@ -1,118 +1,45 @@
+# Mac 软件管理方案
 
-# Mac 软件
-记录 Mac 软件
+## 备份
+软件安装有以下 4 种方式
+1. Mac App Store 安装，位置：/Applications
+2. 手动下载安装，位置：/Applications
+3. Homebrew 安装，位置：/usr/local/Cellar，主要是一些命令行工具
+4. Homebrew Cask 安装，位置：/usr/local/Caskroom，主要是各种普通软件，如 Alfred、Steam 等
 
-软件是手的延伸，寻找最佳的软件是提高效率的手段之一
+```sh
+# All Apps
+ls -lh /Applications > ~/Library/Mobile\ Documents/com~apple~CloudDocs/AppList/All_AppList
 
-切记需要基于自身的需求找软件
+# MAS Apps
+/usr/local/bin/mas list > ~/Library/Mobile\ Documents/com~apple~CloudDocs/AppList/MAS_AppList
 
-## 列表
+# brew Apps
+/usr/local/bin/brew list > ~/Library/Mobile\ Documents/com~apple~CloudDocs/AppList/Brew_AppList
 
-### vscode
-编辑器
+# brew cask Apps
+/usr/local/bin/brew cask list > ~/Library/Mobile\ Documents/com~apple~CloudDocs/AppList/BrewCask_AppList
+```
 
-### Dash 
-查询 api 神器，提高 api 查询效率
+## 自动安装
+需要说明的是，第一行命令生成的所有软件列表，鱼龙混杂，需要你自己挑选并安装。
 
-### Firefox 
-火狐浏览器，前端总归还是需要多安装几个浏览器的
+后面几种可以自动安装。但是，在安装前，你应该检查列表文件，去除一些不再需要的 App，确保内容无误。
 
-### Chrome
-这个就不解释了
+```sh
+# 进入 iCloud 中的 AppList 文件夹
+cd  ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/AppList
 
-### Manico
-可以自定义快速启动应用的快捷键。可以进一步提高切换应用的效率
+# 生成 MAS_AppList 安装命令
+cat AppList/MAS_AppList | sed "s/(.*)//g" | sed -Ee 's/([0-9]+) (.+)/mas install \1 #\2/g' > ~/Desktop/AppInstaller
 
-### IINA
-好用的播放器
+# 生成 Brew_AppList 安装命令
+echo "\nbrew install $(cat AppList/Brew_AppList | tr '\n' ' ')" >> ~/Desktop/AppInstaller
 
-### iStat Menus
-查看机器当前运行的状态
+# 生成 BrewCask_AppList 安装命令
+echo "\nbrew cask install $(cat AppList/BrewCask_AppList | tr '\n' ' ')" >> ~/Desktop/AppInstaller
 
-### Alfred 4
-神器
-
-#### 扩展
-- 有道翻译 - 快速的查询单词
-
-### Shapes
-讲课时画图专用
-
-### IntelliJ IDEA
-写 java 的时候用的 IDE
-
-### XMind ZEN
-制作思维导图
-
-### Typora
-专门写 markdown 文件的
-
-### TotalFinder
-扩展原生finder、增加了多标签、剪切、等功能
-
-### Tencent Lemon
-可以清理一下机器的垃圾文件
-
-### Snipaste
-截图
-
-### ShadowsocksX-NG-R8
-配合 ‘www.muncloud.dog' fq 用
-
-
-### ScreenFlow
-录屏专用
-
-### OBS
-直播推流用
-
-### Navicat Premium
-数据库图形操作软件
-
-### Moom
-高效的处理窗口大小和位置
-
-### KeyCastr
-显示键盘的输入，直播的时候用
-
-### iTerm
-程序员不解释
-
-### iMovie 剪辑
-可以编辑视频
-
-### Gifox
-制作动图
-
-### Amphetamine
-防止机器自动休眠
-
-
-### niz 键盘校验工具
-静电容键盘，需要时不时的校验一下
-
-
-### 滴答清单
-任务管理
-
-
-### Keka
-压缩文件、解压文件
-
-
-
-### Itsycal
-扩展日历
-
-### Bartender 3
-管理任务栏的图标，可以隐藏图片
-
-### 钉钉
-### 飞书
-### 网易有道词典
-### 有道云笔记
-### 百度网盘
-### Docker
-### QQ
-### QQ音乐
-### 微信
+# 开始安装
+chmod +x ~/Desktop/AppInstaller
+~/Desktop/AppInstaller
+```
