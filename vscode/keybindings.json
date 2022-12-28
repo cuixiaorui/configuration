@@ -1,0 +1,243 @@
+[
+	{
+	  "key": "a",
+	  "command": "explorer.newFile",
+	  "when": "filesExplorerFocus && !inputFocus"
+	},
+	{
+	  "key": "shift+a",
+	  "command": "explorer.newFolder",
+	  "when": "filesExplorerFocus && !inputFocus"
+	},
+	{
+	  "key": "r",
+	  "command": "renameFile",
+	  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+	  "key": "d",
+	  "command": "deleteFile",
+	  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+	  "key": "x",
+	  "command": "filesExplorer.cut",
+	  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+	  "key": "y",
+	  "command": "filesExplorer.copy",
+	  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+	},
+	{
+	  "key": "p",
+	  "command": "filesExplorer.paste",
+	  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+	  "key": "ctrl+;",
+	  "command": "workbench.view.explorer",
+	  "when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+	  // window move left */
+	  "key": "shift+left",
+	  "command": "vim.remap",
+	  "when": "vim.mode == 'Normal'",
+	  "args": {
+	    "after": [
+	      "<c-w>",
+	      "h"
+	    ]
+	  }
+	},
+	{
+	  // window move right */
+	  "key": "shift+right",
+	  "command": "vim.remap",
+	  "when": "vim.mode == 'Normal'",
+	  "args": {
+	    "after": [
+	      "<c-w>",
+	      "l"
+	    ]
+	  }
+	},
+	{
+	  // window move up */
+	  "key": "shift+up",
+	  "command": "vim.remap",
+	  "when": "vim.mode == 'Normal'",
+	  "args": {
+	    "after": [
+	      "<c-w>",
+	      "k"
+	    ]
+	  }
+	},
+	{
+	  // window move down */
+	  "key": "shift+down",
+	  "command": "vim.remap",
+	  "when": "vim.mode == 'Normal'",
+	  "args": {
+	    "after": [
+	      "<c-w>",
+	      "j"
+	    ]
+	  }
+	},
+	{
+	  "key": "shift+cmd+\\",
+	  "command": "workbench.action.splitEditorUp"
+	},
+	{
+	  "key": "ctrl+,",
+	  "command": "workbench.action.terminal.toggleTerminal",
+	  "when": "terminal.active"
+	},
+	{
+	  "key": "cmd+]",
+	  "command": "workbench.action.terminal.focusNextPane",
+	  "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+	  "key": "alt+cmd+right",
+	  "command": "-workbench.action.terminal.focusNextPane",
+	  "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+	  "key": "cmd+[",
+	  "command": "workbench.action.terminal.focusPreviousPane",
+	  "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+	  "key": "alt+cmd+left",
+	  "command": "-workbench.action.terminal.focusPreviousPane",
+	  "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+	  "key": "shift+alt+q",
+	  "command": "workbench.action.terminal.kill"
+	},
+	{
+	  "key": "ctrl+alt+n",
+	  "command": "workbench.action.terminal.new",
+	  "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+	},
+	{
+	  "key": "ctrl+shift+`",
+	  "command": "-workbench.action.terminal.new",
+	  "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+	},
+	{
+	  "key": "shift+cmd+0",
+	  "command": "workbench.action.debug.restart",
+	  "when": "inDebugMode"
+	},
+	{
+	  "key": "shift+cmd+f5",
+	  "command": "-workbench.action.debug.restart",
+	  "when": "inDebugMode"
+	},
+	{
+	  "key": "shift+cmd+9",
+	  "command": "editor.debug.action.toggleBreakpoint",
+	  "when": "debuggersAvailable && editorTextFocus"
+	},
+	{
+	  "key": "f9",
+	  "command": "-editor.debug.action.toggleBreakpoint",
+	  "when": "debuggersAvailable && editorTextFocus"
+	},
+	{
+	  "key": "cmd+'",
+	  "command": "workbench.action.debug.stepOver",
+	  "when": "debugState == 'stopped'"
+	},
+	{
+	  "key": "f10",
+	  "command": "-workbench.action.debug.stepOver",
+	  "when": "debugState == 'stopped'"
+	},
+	{
+	  "key": "shift+cmd+'",
+	  "command": "workbench.action.debug.stepInto",
+	  "when": "debugState != 'inactive'"
+	},
+	{
+	  "key": "f11",
+	  "command": "-workbench.action.debug.stepInto",
+	  "when": "debugState != 'inactive'"
+	},
+	{
+	  "key": "ctrl+'",
+	  "command": "workbench.action.focusFirstEditorGroup"
+	},
+	// 下面是配套 neovim 插件的配置，现在不在使用 neovim 所以注释掉
+	//   {
+	//     "command": "vscode-neovim.send",
+	//     // the key sequence to activate the binding
+	//     "key": "ctrl+n",
+	//     // don't activate during insert mode
+	//     "when": "editorTextFocus && neovim.mode != insert",
+	//     // the input to send to Neovim
+	//     "args": "<C-n>"
+	// },
+	//   {
+	//     // window move left
+	//     "command": "vscode-neovim.send",
+	//     "key": "shift+left",
+	//     "when": "neovim.mode == normal",
+	//     "args": "<C-w>h"
+	//   },
+	//   {
+	//     // window move right
+	//     "command": "vscode-neovim.send",
+	//     "key": "shift+right",
+	//     "when": "neovim.mode == normal",
+	//     "args": "<C-w>l"
+	//   },
+	//   {
+	//     // window move down
+	//     "command": "vscode-neovim.send",
+	//     "key": "shift+down",
+	//     "when": "neovim.mode == normal",
+	//     "args": "<C-w>j"
+	//   },
+	//   {
+	//     // window move up
+	//     "command": "vscode-neovim.send",
+	//     "key": "shift+up",
+	//     "when": "neovim.mode == normal",
+	//     "args": "<C-w>k"
+	//   },
+	//   {
+	//     "key": "cmd+/",
+	//     "command": "-editor.action.commentLine",
+	//     "when": "editorTextFocus && !editorReadonly"
+	//   },
+	//   {
+	//     "key": "cmd+/",
+	//     "command": "",
+	//     "when": "editorTextFocus && !editorReadonly"
+	//   },
+	//   {
+	//     "command": "vscode-neovim.send",
+	//     "key": "cmd+/",
+	//     "when": "neovim.mode == normal || neovim.mode == visual",
+	//     "args": "<C-/>"
+	//   },
+	//   {
+	//     "command": "vscode-neovim.send",
+	//     "key": "ctrl+y",
+	//     "when": "neovim.mode == normal || neovim.mode == visual",
+	//     "args": "<C-y>"
+	//   },
+	//   {
+	//     "command": "vscode-neovim.send",
+	//     "key": "ctrl+p",
+	//     "when": "neovim.mode == normal",
+	//     "args": ["<C-p>"]
+	//   },
+      ]
