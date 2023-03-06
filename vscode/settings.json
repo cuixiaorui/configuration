@@ -613,6 +613,7 @@
 	},
 	"workbench.colorTheme": "Evondev Dracula Darker Contrast",
 	"editor.guides.bracketPairs": "active",
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	// neovim 相关的配置 因为暂时不在使用 neovim 所以注释掉
 	// "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/opt/neovim/bin/nvim",
 	// "vscode-neovim.neovimExecutablePaths.linux": "/opt/homebrew/opt/neovim/bin/nvim",
